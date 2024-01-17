@@ -1,33 +1,35 @@
 import os
 import pandas as pd
-#Indigov PNG Location
-indigov_png = "/Users/abrazilbaker/Ecosystem/Development/flex-tools-main/sso_integration/universal/Indigov.png"
+
+#QUEUE 
+queue = []
+
+#Is the account set up yet?
 account_primed = True
+
+#Are we ready to assign groups?
 client_groups_ready = True
 
 #CSV FILEPATH LOCATION
-#CSV_file_location ="../universal/wonring1031.csv"
-CSV_file_location = "../clients/wonring122623.csv"
-reps_file_location = "../clients/mihouse2.csv" #MAKE csv with Title, App_label 
-#nc# reps_file_location = "../clients/ncga/input_ncrep080323.csv" #MAKE csv with Title, App_label 
-#rep file name must have these column titles: "Title","App_label","Group Name","Email"
-
-#ONE-OFF-SUBDOMAIN DF CREATION
-scratch_csv_needed = False
-scratch_subdomain = 'waospi'
-app_label = 'Washington Office of Superintendent of Public Instruction'
-group_name='TBD'
-email='NA'
+CSV_file_location = "../assets/UPDATEDCREDSFILENAME.csv"
+reps_file_location = "../assets/UPDATEDTEMPLATEFILE.csv" #MAKE csv with Title, App_label 
 
 #DATAFRAME SETUP
-cohort1 = 'mirep'
-cohort2 = 'misen'
-#cohort3 = 'nm' #add more if needed
+cohort1 = ''
+cohort2 = ''
+#cohort3 = '' #add more if needed
 
-#ASSIGNMENTS
-exact_okta_url = True #i.e. do we have a link to edit provisioning directly?
+#ONE-OFF DF CREATION
+scratch_csv_needed = False
+scratch_subdomain = ''
+app_label = 'n'
+group_name=''
+email=''
+
+#JUST GROUP ASSIGNMENTS
+exact_okta_url = False #i.e. do we have a link to edit provisioning directly?
 cohort_prefix = ''
-organization = "News"
+organization = "Indigov" #change this per client
 
 class AssignGroups:
     prefix = "" #prefix to custom group assignments in Okta
@@ -63,126 +65,6 @@ def pull_group_data(grp_class_instance):
     return grp_value
 tz = 'Eastern Time (US & Canada)'
 
-"""
-DONE: 
-'mirepmartin',
-'mirepmckinney',
-
-'mireprogers',
-'mirepsmit',
-'mirepstone',
-'mirepaiyash',
-'mirepalexander',
-'mirepandrews',
-'mireparagona',
-'mireparbit',
-'mirepbeeler',
-'mirepbegole',
-'mirepbeson',
-'mirepbezotte',
-'mirepbierlein',
-'mirepbollin',
-'mirepborton',
-'mirepbrabec',
-'mirepbreen',
-'mirepbrixie',
-'mirepbruck',
-'mirepbyrnes',
-'mirepcarra',
-'mireptyronecarter',
-'mirepcarter',
-'mirepcavitt',
-'mirepchurches',
-'mirepcoffia',
-'mirepcoleman',
-'mirepconlin',
-'mirepdeboer',
-'mirepboyer',
-'mirepdesana',
-'mirepdievendorf',
-'mirepedwards',
-'mirepfarhat',
-'mirepfiller',
-'mirepfink',
-'mirepfox',
-'mirepfriske',
-'mirepglanville',
-'mirepgrant',
-'mirepgreen',
-'mirepgreene',
-'mirephaadsma',
-'mirephall',
-'mirepharris',
-'mirephill',
-'mirephoadley',
-'mirephood',
-'mirephope',
-'mirephoskins',
-'mirepkoleszar',
-'mirepkuhn',
-'mirepkunse',
-'mirepliberati',
-'mireplightner',
-'mirepmacdonell',
-'mirepmaddock',
-'mirepmarkkanen',
-'mirepmartus',
-'mirepmcfall',
-'mirepmeerman',
-'mirepmentzer',
-'mirepmiller',
-'mirepmorgan',
-'mirepmorse',
-'mirepmueller',
-'mirepneeley',
-'mirepneyer',
-'mireponeal',
-'mirepoutman',
-'mireppaiz',
-'mireppaquette',
-'mireppohutsky',
-'mirepposthumus',
-'mirepprestin',
-'mirepprice',
-'mireppuri',
-'mireprheingans',
-'mireprigas',
-'mireproth',
-'mirepschmaltz',
-'mirepschriver',
-'mirepschuette',
-'mirepscott',
-'mirepshannon',
-'mirepskaggs',
-'mirepslagh',
-'mirepsnyder',
-'mirepstgermaine',
-'mirepsteckloff',
-'mirepsteele',
-'mireptate',
-'mirepthompson',
-'mireptisdel',
-'mireptsernoglou',
-'mirepvanderwall',
-'mirepvanwoerkom',
-'mirepwegela',
-'mirepweiss',
-'mirepwendzel',
-'mirepwhitsett',
-'mirepwilson',
-'mirepwitwer',
-'mirepwozniak',
-'mirepyoung',
-'mirepzorn'
-NOT DONE:
-
-"""
-
-
-#CLIENT QUEUE 
-queue = [
-]
-
 #STABLE CONFIG VALUES
 class GlobalCred:
     new_instance_url = "https://indigov-admin.okta.com/admin/app/zendesk/instance/_new_/"
@@ -191,3 +73,6 @@ class GlobalCred:
     saml = 'SAML'
     logoutUrl = 'https://login.indigov.com'
     zapiUser = 'admin@indigov.us/token'
+
+#PNG Location
+indigov_png = "../assets/Indigov.png"
