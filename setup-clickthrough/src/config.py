@@ -29,7 +29,9 @@ email=''
 #JUST GROUP ASSIGNMENTS
 exact_okta_url = False #i.e. do we have a link to edit provisioning directly?
 cohort_prefix = ''
-organization = "Indigov" #change this per client
+organization = "Indigov"
+client_organization = "" #change this per client
+tz = 'Eastern Time (US & Canada)'
 
 class AssignGroups:
     prefix = "" #prefix to custom group assignments in Okta
@@ -44,11 +46,11 @@ proserv_grp = AssignGroups("Professional Services","","","","")
 teamdev_grp = AssignGroups("Team Dev","","","","")
 
 client_grp = AssignGroups(
-    "",
-    "Full 2023",
-    "",
-    "",
-    "Lite 2023")
+    "Admin",
+    "Full",
+    "Legislator",
+    "Intern",
+    "Lite")
 
 def pull_group_data(grp_class_instance):
     grp_value = []
@@ -63,7 +65,6 @@ def pull_group_data(grp_class_instance):
         else:
             grp_value.append(g)
     return grp_value
-tz = 'Eastern Time (US & Canada)'
 
 #STABLE CONFIG VALUES
 class GlobalCred:
